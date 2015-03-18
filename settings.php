@@ -6,4 +6,4 @@
 define('STARTING_POINT', '2015-03-22');
 
 // Let's set the message, too
-define('PANEL_MESSAGE', "! c o d e !");
+define('PANEL_MESSAGE', "♥ c o d e ♥");

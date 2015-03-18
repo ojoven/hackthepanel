@@ -58,16 +58,6 @@ $messageArray = str_split($message);
 
                 <?php }?>
 
-
-                <g transform="translate(507, 0)">
-                    <rect data-date="2014-12-14" data-count="1" fill="#d6e685" y="0" height="11" width="11" class="day"/>
-                    <rect data-date="2014-12-15" data-count="0" fill="#1e6823" y="13" height="11" width="11" class="day"/>
-                    <rect data-date="2014-12-16" data-count="0" fill="#1e6823" y="26" height="11" width="11" class="day"/>
-                    <rect data-date="2014-12-17" data-count="3" fill="#d6e685" y="39" height="11" width="11" class="day"/>
-                    <rect data-date="2014-12-18" data-count="2" fill="#d6e685" y="52" height="11" width="11" class="day"/>
-                    <rect data-date="2014-12-19" data-count="0" fill="#eeeeee" y="65" height="11" width="11" class="day"/>
-                    <rect data-date="2014-12-20" data-count="15" fill="#44a340" y="78" height="11" width="11" class="day"/>
-                </g>
             </g>
         </svg>
 

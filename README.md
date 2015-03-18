@@ -1,1 +1,1 @@
-![HackThePanel](https://github.com/ojoven/hackthepanel/blob/master/panel.png "HackThePanel")
+![HackThePanel](https://github.com/ojoven/hackthepanel/blob/master/hackthepanel.png "HackThePanel")

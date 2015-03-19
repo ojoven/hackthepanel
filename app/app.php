@@ -34,7 +34,6 @@ class App {
     public function run() {
 
         $this->initialize();
-        echo $this->pixels;
 
         if ($this->isPaintingDay()) {
             $this->paintPixel();
@@ -49,8 +48,12 @@ class App {
             return false;
         }
 
-
-
+        $diffDays = $this->_getDiffDates($this->startingPoint,$this->today);
+        if ((int)$this->pixels[(int)$diffDays]==1) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
@@ -63,7 +66,7 @@ class App {
 
     private function messageToPixels() {
 
-        $charactersMessage = str_split($this->message);
+        $charactersMessage = preg_split('//u', $this->message, -1, PREG_SPLIT_NO_EMPTY);
         $pixels = "";
 
         foreach ($charactersMessage as $character) {
@@ -76,8 +79,25 @@ class App {
 
         }
 
+        $pixelsChunked = chunk_split($pixels,7);
+        print_r($pixelsChunked);
+
         return $pixels;
 
+    }
+
+    private function _getDiffDates($date1,$date2) {
+
+        $dStart = new DateTime($date1);
+        $dEnd  = new DateTime($date2);
+        $dDiff = $dStart->diff($dEnd);
+
+        return $dDiff->days;
+    }
+
+    // For testing purposes
+    public function setToday($today) {
+        $this->today = $today;
     }
 
 }

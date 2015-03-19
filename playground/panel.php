@@ -10,9 +10,7 @@ require_once 'characters.php';
 // 52 columns x 7
 // If each character gets 5 columns and we need 1 column for space between characters
 // floor(52/(5+1)) = total 8 characters length
-$message = "! c o d e !";
-$charactersInCols['!'] = $charactersInCols['♥'];
-$messageArray = str_split($message);
+$messageArray = preg_split('//u', PANEL_MESSAGE, -1, PREG_SPLIT_NO_EMPTY);
 ?>
 
 <div class="boxed-group-inner" id="contributions-calendar">

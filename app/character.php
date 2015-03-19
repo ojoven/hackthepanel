@@ -41,6 +41,7 @@ class Character {
         $characters['4'] = array('00010','00110','01010','10010','11111','00010','00010');
 
         $characters[' '] = array('0','0','0','0','0','0','0');
+
         $characters['♥'] = array('0110110','1001001','1000001','1000001','0100010','0010100','0001000');
         // TODO: Do the rest, http://fontmeme.com/pixel-fonts/
 

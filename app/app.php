@@ -41,6 +41,10 @@ class App {
 
     }
 
+    public function getPixels() {
+        return $this->pixels;
+    }
+
     public function isPaintingDay() {
 
         // The script will work just after the starting point
@@ -80,7 +84,6 @@ class App {
         }
 
         $pixelsChunked = chunk_split($pixels,7);
-        print_r($pixelsChunked);
 
         return $pixels;
 

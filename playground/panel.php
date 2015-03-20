@@ -1,16 +1,12 @@
 <?php
-require_once 'characters.php';
-
-
-// print_characters($characters);
-
-
-// print_character($characters['♥']);
+require_once __DIR__.'/../app/app.php';
 
 // 52 columns x 7
 // If each character gets 5 columns and we need 1 column for space between characters
 // floor(52/(5+1)) = total 8 characters length
 $messageArray = preg_split('//u', PANEL_MESSAGE, -1, PREG_SPLIT_NO_EMPTY);
+$characterModel = new Character();
+$characters = $characterModel->getCharacters();
 ?>
 
 <div class="boxed-group-inner" id="contributions-calendar">
@@ -22,7 +18,7 @@ $messageArray = preg_split('//u', PANEL_MESSAGE, -1, PREG_SPLIT_NO_EMPTY);
                 $index = 0;
                 foreach ($messageArray as $character) {
 
-                    $pixelsCharacter = $charactersInCols[$character];
+                    $pixelsCharacter = $characters[$character];
 
                     foreach ($pixelsCharacter as $column) { ?>
 

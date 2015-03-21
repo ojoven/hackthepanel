@@ -32,17 +32,30 @@ class App {
         $this->message = PANEL_MESSAGE;
         $this->pixels = $this->messageToPixels($this->message);
 
-        $this->today = "2015-03-23";
-
     }
 
     public function run() {
 
         $this->initialize();
 
+        // Paint pixel if it's the day
         if ($this->isPaintingDay()) {
             $this->paintPixel();
         }
+
+        // Take a shot of the panel
+        $this->takeScreenshotContributionsPanel();
+    }
+
+    public function takeScreenshotContributionsPanel() {
+
+        $pathToPhantomJs = ROOT_PATH . "renderpanel.js";
+        $screenshotFilename = ROOT_PATH . "screenshots/screenshot_" . $this->today . ".png";
+        $extension = "png";
+
+        // Generate screenshot panel
+        $githubUserUrl = "https://github.com/" . GITHUB_USER;
+        exec("phantomjs --ssl-protocol=any " . $pathToPhantomJs .  " " . $githubUserUrl . " " . $screenshotFilename . " " . $extension);
 
     }
 
@@ -75,7 +88,7 @@ class App {
         for ($i=0;$i<=$numCommits;$i++) {
             file_put_contents(ROOT_PATH . "commit", $this->today . "\n", FILE_APPEND);
             exec("git add -A");
-            exec("git commit -m \"paint pixel on http://github.com/ojoven\"");
+            exec("git commit -m \"paint pixel on http://github.com/" . GITHUB_USER . "\"");
             exec("git push -u origin master");
         }
 

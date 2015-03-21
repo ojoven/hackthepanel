@@ -7,3 +7,7 @@ define('STARTING_POINT', '2015-03-22');
 
 // Let's set the message, too
 define('PANEL_MESSAGE', " ♥  c o d e  ♥ ");
+
+// The Github user and repo where this should commit to
+define('GITHUB_USER', 'ojoven');
+define('GITHUB_REPO', 'hackthepanel');

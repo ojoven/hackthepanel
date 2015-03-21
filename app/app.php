@@ -29,6 +29,8 @@ class App {
         $this->message = PANEL_MESSAGE;
         $this->pixels = $this->messageToPixels($this->message);
 
+        $this->today = "2015-03-23";
+
     }
 
     public function run() {
@@ -64,7 +66,13 @@ class App {
     // Paint a pixel on green - by committing ~20 times
     public function paintPixel() {
 
-        echo "paint!";
+        echo "paint!" . PHP_EOL;
+
+        file_put_contents(ROOT_PATH . "commit", $this->today . "\n", FILE_APPEND);
+
+        exec("git add -A");
+        exec("git commit -m \"paint pixel on http://github.com/ojoven\"");
+        exec("git push -u origin master");
 
     }
 

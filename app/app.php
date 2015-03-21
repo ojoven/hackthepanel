@@ -45,6 +45,18 @@ class App {
 
         // Take a shot of the panel
         $this->takeScreenshotContributionsPanel();
+
+        // Save status
+        $this->saveStatus();
+    }
+
+    public function saveStatus() {
+
+        $message = date("Y-m-d H:i:s") . " -> ";
+        $message .= ($this->isPaintingDay()) ? "paint!" : "no paint";
+        $message .= "\n";
+        file_put_contents(ROOT_PATH . "status", $message, FILE_APPEND);
+
     }
 
     public function takeScreenshotContributionsPanel() {

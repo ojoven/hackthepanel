@@ -70,7 +70,6 @@ class App {
     public function paintPixel() {
 
         echo "paint!" . PHP_EOL;
-
         $numCommits = rand(self::MIN_COMMITS_PIXEL_ON, self::MAX_COMMITS_PIXEL_ON);
 
         for ($i=0;$i<=$numCommits;$i++) {

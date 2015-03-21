@@ -38,6 +38,6 @@ page.open(url, function (status) {
             page.render(filePath, { format: extension }); // Phantom creates the images much faster in jpg but avconv creates corrupted video if JPG inputs
             phantom.exit();
 
-        }, 2000);
+        }, 5000);
     }
 });

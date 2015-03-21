@@ -5,6 +5,9 @@ require_once __DIR__.'/character.php';
 
 class App {
 
+    const MIN_COMMITS_PIXEL_ON = 18;
+    const MAX_COMMITS_PIXEL_ON = 22;
+
     // Characters in pixels
     protected $characters;
 
@@ -68,11 +71,14 @@ class App {
 
         echo "paint!" . PHP_EOL;
 
-        file_put_contents(ROOT_PATH . "commit", $this->today . "\n", FILE_APPEND);
+        $numCommits = rand(self::MIN_COMMITS_PIXEL_ON, self::MAX_COMMITS_PIXEL_ON);
 
-        exec("git add -A");
-        exec("git commit -m \"paint pixel on http://github.com/ojoven\"");
-        exec("git push -u origin master");
+        for ($i=0;$i<=$numCommits;$i++) {
+            file_put_contents(ROOT_PATH . "commit", $this->today . "\n", FILE_APPEND);
+            exec("git add -A");
+            exec("git commit -m \"paint pixel on http://github.com/ojoven\"");
+            exec("git push -u origin master");
+        }
 
     }
 

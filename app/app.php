@@ -57,6 +57,7 @@ class App {
         $message .= "\n";
         file_put_contents(ROOT_PATH . "status", $message, FILE_APPEND);
 
+        $this->gitAddCommitAndPush("status");
     }
 
     public function takeScreenshotContributionsPanel() {
@@ -99,10 +100,16 @@ class App {
 
         for ($i=0;$i<=$numCommits;$i++) {
             file_put_contents(ROOT_PATH . "commit", $this->today . "\n", FILE_APPEND);
-            exec("git add -A");
-            exec("git commit -m \"paint pixel on http://github.com/" . GITHUB_USER . "\"");
-            exec("git push -u origin master");
+            $this->gitAddCommitAndPush("paint pixel on http://github.com/" . GITHUB_USER);
         }
+
+    }
+
+    private function gitAddCommitAndPush($message) {
+
+        exec("git add -A");
+        exec("git commit -m \"" . $message . " \"");
+        exec("git push -u origin master");
 
     }
 

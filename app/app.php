@@ -57,7 +57,8 @@ class App {
         $message .= "\n";
         file_put_contents(ROOT_PATH . "status", $message, FILE_APPEND);
 
-        $this->gitAddCommitAndPush("status");
+        // Won't push this, to fet some grey pixels
+        //$this->gitAddCommitAndPush("status");
     }
 
     public function takeScreenshotContributionsPanel() {

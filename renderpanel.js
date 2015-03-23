@@ -23,6 +23,7 @@ page.open(url, function (status) {
         phantom.exit(1);
     } else {
 
+        /**
         var bb = page.evaluate(function () {
             return document.getElementsByClassName("js-calendar-graph")[0].getBoundingClientRect();
         });
@@ -33,9 +34,10 @@ page.open(url, function (status) {
             width:  bb.width,
             height: bb.height
         };
+         **/
 
         // First time so the page is properly rendered
-        page.render(filePath, { format: extension }); // Phantom creates the images much faster in jpg but avconv creates corrupted video if JPG inputs
+        //page.render(filePath, { format: extension }); // Phantom creates the images much faster in jpg but avconv creates corrupted video if JPG inputs
 
         window.setTimeout(function () {
 

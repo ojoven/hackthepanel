@@ -67,7 +67,7 @@ class App {
         $extension = "png";
 
         // Generate screenshot panel
-        $githubUserUrl = "https://github.com/" . GITHUB_USER;
+        $githubUserUrl = "https://github.com/" . GITHUB_USER . "/contributions";
         exec("phantomjs --ssl-protocol=any " . $pathToPhantomJs .  " " . $githubUserUrl . " " . $screenshotFilename . " " . $extension);
 
     }

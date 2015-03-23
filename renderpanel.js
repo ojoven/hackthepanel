@@ -8,10 +8,51 @@ var extension = system.args[3];
 
 var page = require('webpage').create();
 
+var resourceWait = 300,
+    maxRenderWait = 10000;
+
+var count = 0,
+    forcedRenderTimeout,
+    renderTimeout;
+
+
+function doRender() {
+    var bb = page.evaluate(function () {
+        document.body.bgColor = 'white';
+        return document.getElementsByClassName("js-calendar-graph-svg")[0].getBoundingClientRect();
+    });
+
+    page.clipRect = {
+        top:    bb.top - 5,
+        left:   bb.left - 10,
+        width:  bb.width + 20,
+        height: bb.height + 20 // some padding
+    };
+
+    page.render(filePath, { format: extension }); // Phantom creates the images much faster in jpg but avconv creates corrupted video if JPG inputs
+    phantom.exit();
+}
+
 // For logging errors
 page.onResourceError = function(resourceError) {
     page.reason = resourceError.errorString;
     page.reason_url = resourceError.url;
+};
+
+page.onResourceRequested = function (req) {
+    count += 1;
+    console.log('> ' + req.id + ' - ' + req.url);
+    clearTimeout(renderTimeout);
+};
+
+page.onResourceReceived = function (res) {
+    if (!res.stage || res.stage === 'end') {
+        count -= 1;
+        console.log(res.id + ' ' + res.status + ' - ' + res.url);
+        if (count === 0) {
+            renderTimeout = setTimeout(doRender, resourceWait);
+        }
+    }
 };
 
 page.open(url, function (status) {
@@ -23,22 +64,10 @@ page.open(url, function (status) {
         phantom.exit(1);
     } else {
 
-        window.setTimeout(function () {
-
-            var bb = page.evaluate(function () {
-                return document.getElementsByClassName("js-calendar-graph-svg")[0].getBoundingClientRect();
-            });
-
-            page.clipRect = {
-                top:    bb.top,
-                left:   bb.left,
-                width:  bb.width,
-                height: bb.height
-            };
-
-            page.render(filePath, { format: extension }); // Phantom creates the images much faster in jpg but avconv creates corrupted video if JPG inputs
+        forcedRenderTimeout = setTimeout(function () {
+            console.log(count);
+            doRender();
             phantom.exit();
-
-        }, 1000);
+        }, maxRenderWait);
     }
 });

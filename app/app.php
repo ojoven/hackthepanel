@@ -63,12 +63,16 @@ class App {
     public function takeScreenshotContributionsPanel() {
 
         $pathToPhantomJs = ROOT_PATH . "renderpanel.js";
-        $screenshotFilename = ROOT_PATH . "screenshots/screenshot_" . $this->today . ".jpg";
-        $extension = "jpg";
+        $screenshotFilename = ROOT_PATH . "screenshots/screenshot_" . $this->today . ".png";
+        $extension = "png";
 
         // Generate screenshot panel
         $githubUserUrl = "https://github.com/users/" . GITHUB_USER . "/contributions";
-        exec("phantomjs --ssl-protocol=any " . $pathToPhantomJs .  " " . $githubUserUrl . " " . $screenshotFilename . " " . $extension);
+        //$githubUserUrl = "https://github.com/" . GITHUB_USER;
+
+        $command = "phantomjs --ssl-protocol=any " . $pathToPhantomJs .  " " . $githubUserUrl . " " . $screenshotFilename . " " . $extension;
+        echo $command . PHP_EOL;
+        exec($command);
 
     }
 

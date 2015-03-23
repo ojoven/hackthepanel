@@ -63,8 +63,8 @@ class App {
     public function takeScreenshotContributionsPanel() {
 
         $pathToPhantomJs = ROOT_PATH . "renderpanel.js";
-        $screenshotFilename = ROOT_PATH . "screenshots/screenshot_" . $this->today . ".png";
-        $extension = "png";
+        $screenshotFilename = ROOT_PATH . "screenshots/screenshot_" . $this->today . ".jpg";
+        $extension = "jpg";
 
         // Generate screenshot panel
         $githubUserUrl = "https://github.com/users/" . GITHUB_USER . "/contributions";

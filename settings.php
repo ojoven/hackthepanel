@@ -6,7 +6,7 @@
 define('STARTING_POINT', '2015-04-19');
 
 // Let's set the message, too
-define('PANEL_MESSAGE', " i ♥ c o d e");
+define('PANEL_MESSAGE', "♥ c o d e ♥");
 
 // The Github user and repo where this should commit to
 define('GITHUB_USER', 'ojoven');

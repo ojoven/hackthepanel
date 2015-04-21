@@ -1,0 +1,5 @@
+#!/bin/bash
+SCRIPT_PATH=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)/`basename "${BASH_SOURCE[0]}"`
+FOLDER_PATH=`dirname $SCRIPT_PATH`
+cd $FOLDER_PATH
+php index.php

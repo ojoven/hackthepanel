@@ -3,7 +3,7 @@
 // We must set an starting point on Sunday
 // because it's the highest point in the panel
 // Format: Y-m-d
-define('STARTING_POINT', '2015-04-19');
+define('STARTING_POINT', '2015-04-26');
 
 // Let's set the message, too
 define('PANEL_MESSAGE', "i ♥ c o d e");

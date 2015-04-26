@@ -5,8 +5,8 @@ require_once __DIR__.'/character.php';
 
 class App {
 
-    const MIN_COMMITS_PIXEL_ON = 18;
-    const MAX_COMMITS_PIXEL_ON = 22;
+    const MIN_COMMITS_PIXEL_ON = 24;
+    const MAX_COMMITS_PIXEL_ON = 26;
 
     // Characters in pixels
     protected $characters;
